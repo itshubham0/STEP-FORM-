@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Step form</title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <div class="container" onsubmit="takevalue()">
+        <form id="Form1">
+            <h3>CREATE ACCOUNT</h3>
+            <input type="text " placeholder="Email" id="email">
+            <span id="valemail" class="text-danger font-weight-bold"> </span>
+
+            <input type="password" placeholder="Password" id="password">
+            <span id="valPass" class="text-danger font-weight-bold"> </span>
+
+            <input type="password" placeholder="Confirm Password" id="cnPassword">
+            <span id="valConPass" class="text-danger font-weight-bold"> </span>
+            <div class="btn-box">
+                <button type="button" id="Next1">Next</button>
+
+            </div>
+
+        </form>
+        <form id="Form2">
+            <h3>Personal Info</h3>
+            <input type="text " placeholder="First Name" id="fname" required>
+            <span id="valfname" class="text-danger font-weight-bold"> </span>
+
+            <input type="text " placeholder="Last Name" id="lname" required>
+            <span id="vallname" class="text-danger font-weight-bold"> </span>
+
+            <input type="number" placeholder="Mobile No." id="Mnum" required>
+            <span id="valMnum" class="text-danger font-weight-bold"> </span>
+
+
+            <div class="btn-box">
+                <button type="button" id="Back1">Back</button>
+                <button type="button" id="Next2">Next</button>
+
+            </div>
+
+        </form>
+        <form id="Form3">
+            <h3>Education</h3>
+            <input type="text " placeholder="College Name" id="cllg">
+            <span id="valcllg" class="text-danger font-weight-bold"> </span>
+
+            <input type="text " placeholder="Course" id="course">
+            <span id="valcourse" class="text-danger font-weight-bold"> </span>
+
+            <input type="text " placeholder="Year" id="year">
+            <span id="valyear" class="text-danger font-weight-bold"> </span>
+
+            <div class="btn-box">
+                <button type="button" id="Back2">Back</button>
+                <button type="submit" id="submit">Submit</button>
+
+            </div>
+
+        </form>
+        <dvi class="step-row">
+            <div id="progress"></div>
+            <div class="step-col"><small>
+                    <h5>Step1</h5>
+                </small></div>
+            <div class="step-col"><small>
+                    <h5>Step2</h5>
+                </small></div>
+            <div class="step-col"><small>
+                    <h5>Step3</h5>
+                </small></div>
+        </dvi>
+    </div>
+    <script>
+
+        var Form1 = document.getElementById("Form1");
+        var Form2 = document.getElementById("Form2");
+        var Form3 = document.getElementById("Form3");
+
+        var Next1 = document.getElementById("Next1");
+        var Next2 = document.getElementById("Next2");
+        var Back1 = document.getElementById("Back1");
+        var Back2 = document.getElementById("Back2");
+        var submit = document.getElementById("submit")
+
+        var progress = document.getElementById("progress");
+
+        Next1.onclick = function () {
+            var vEmail = document.getElementById("email").value;
+            var vPass = document.getElementById("password").value;
+            var vConPass = document.getElementById("cnPassword").value;
+
+            if (vEmail == "") {
+                document.getElementById("valemail").innerHTML = "**Please enter the emai id";
+            }
+            else if (vPass == "") {
+                document.getElementById("valPass").innerHTML = " **Please enter the Password";
+            }
+            else if (vConPass == "") {
+                document.getElementById("valConPass").innerHTML = " **Please enter the Password";
+            }
+            else if (vConPass != vPass) {
+                document.getElementById("valConPass").innerHTML = " *password does not match";
+            } else {
+
+                Form1.style.left = "-450px";
+                Form2.style.left = "40px";
+                progress.style.width = "240px";
+            }
+        }
+        Back1.onclick = function () {
+            Form1.style.left = "40px";
+            Form2.style.left = "450px";
+            progress.style.width = "120px";
+        }
+        Next2.onclick = function () {
+            var firstname = document.getElementById("fname").value;
+            var lastname = document.getElementById("lname").value;
+            var Mnumber = document.getElementById("Mnum").value;
+
+            if (firstname == "") {
+                document.getElementById("valfname").innerHTML = " **please first name";
+            }
+            else if (lastname == "") {
+                document.getElementById("vallname").innerHTML = " **please last name";
+            }
+            else if (Mnumber == "") {
+                document.getElementById("valMnum").innerHTML = " **please enter mobile number";
+            }
+            else {
+                Form2.style.left = "-450px";
+                Form3.style.left = "40px";
+                progress.style.width = "360px";
+            }
+        }
+        Back2.onclick = function () {
+            Form2.style.left = "40px";
+            Form3.style.left = "450px";
+            progress.style.width = "240px";
+        }
+
+        submit.onclick = function () {
+            var scllg = document.getElementById("cllg").value;
+            var scourse = document.getElementById("course").value;
+            var fyear = document.getElementById("year").value;
+
+            if (scllg == "") {
+                document.getElementById("valcllg").innerHTML = " **please fill";
+            }
+            else if (scourse == "") {
+                document.getElementById("valcourse").innerHTML = " **please fill";
+            }
+            else if (fyear == "") {
+                document.getElementById("valyear").innerHTML = " **please fill";
+            } else {
+                alert("scuess");
+
+            }
+
+        }
+        
+    function takevalue () 
+    {
+    var vEmail = document.getElementById("email").value;
+    var firstname = document.getElementById("fname").value;
+    var lastname = document.getElementById("lname").value;
+    var Mnumber = document.getElementById("Mnum").value;
+    var scllg = document.getElementById("cllg").value;
+    var scourse = document.getElementById("course").value;
+    var fyear = document.getElementById("year").value;
+
+    document.write("YOUR INFO : <BR>"+"Email : "+vEmail+"<br>");
+    document.write("First name  : "+" "+firstname+"<br>");
+    document.write("Last name  : "+" "+lastname+"<br>");
+    document.write("Mobile no.  : "+" "+Mnumber+"<br>");
+    document.write("College  : "+" "+scllg+"<br>");
+    document.write("Course  : "+" "+scourse+"<br>");
+    document.write("Year  : "+" "+fyear+"<br>");
+    }
+
+    
+
+
+    </script>
+
+
+</body>
+
+</html>
